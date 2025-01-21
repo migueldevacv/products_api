@@ -19,6 +19,7 @@ Route::prefix('auth')->group(function () {
 
 Route::prefix('catalogs')->middleware(JwtMiddleware::class)->group(function () {
     Route::resource('products', ProductController::class);
+    Route::get('export/xlsx/products', [ProductController::class, 'exportXsls']);
     Route::resource('categories', CategoryController::class);
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);

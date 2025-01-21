@@ -27,7 +27,8 @@ class User extends Authenticatable implements JWTSubject
     ];
 
     protected $attributes = [
-        'role_id' => Role::DATA_ENTRY
+        'role_id' => Role::DATA_ENTRY,
+        'status' => true
     ];
 
     /**
