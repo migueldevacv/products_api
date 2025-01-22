@@ -22,6 +22,12 @@ class User extends Authenticatable implements JWTSubject
         'name',
         'email',
         'password',
+        'role_id',
+        'status'
+    ];
+
+    protected $attributes = [
+        'role_id' => Role::DATA_ENTRY
     ];
 
     /**
@@ -46,7 +52,7 @@ class User extends Authenticatable implements JWTSubject
             'password' => 'hashed',
         ];
     }
-    
+
     public function getJWTIdentifier()
     {
         return $this->getKey();
