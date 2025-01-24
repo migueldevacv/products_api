@@ -16,7 +16,8 @@ class Product extends Model
         'user_id',
     ];
     protected $attributes = [
-        'category_id' => Category::WITHOUT_CATEGORY,
+        'category_id' => Category::WITHOUT_CATEGORY,        
+        'status' => 1,
     ];
 
     protected $appends = [

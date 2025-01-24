@@ -13,6 +13,10 @@ class Category extends Model
 
     public const WITHOUT_CATEGORY = 1;
     
+    protected $attributes = [
+        'status' => 1,
+    ];
+    
     protected $appends = [
         'status_label',
     ];
