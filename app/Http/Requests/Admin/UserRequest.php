@@ -39,7 +39,7 @@ class UserRequest extends NaturalCrudRequest
     public function rulesPut($id)
     {
         return [
-            'password' => 'required|string|max:20|min:7',
+            // 'password' => 'required|string|max:20|min:7',
             // 'c_password' => 'required|string|max:20|min:7|same:password',
             'name' => 'required|string|max:50|min:4',
             'role_id' => 'required|exists:roles,id',
