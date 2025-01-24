@@ -14,6 +14,7 @@ class Product extends Model
         'quantity',
         'category_id',
         'user_id',
+        'status',
     ];
     protected $attributes = [
         'category_id' => Category::WITHOUT_CATEGORY,        

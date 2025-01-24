@@ -24,7 +24,7 @@ class ProductRequest extends NaturalCrudRequest
             Request::METHOD_GET => fn() => self::tryFindId(),
             Request::METHOD_POST => fn() => self::rulesPost(),
             Request::METHOD_PUT => fn() => self::tryFindId(self::rulesPut($this->route()->parameter($this->_model), $this->_model)),
-            Request::METHOD_DELETE => fn() => self::tryFindId(self::rulesPut($this->route()->parameter($this->_model), $this->_model)),
+            Request::METHOD_DELETE => fn() => self::tryFindId(self::rulesDelete($this->route()->parameter($this->_model), $this->_model)),
         ];
     }
 
@@ -50,6 +50,20 @@ class ProductRequest extends NaturalCrudRequest
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
+            'user.id' => [
+                function ($attribute, $value, Closure $fail) use ($id, $model, $user) {
+                    $product = Product::find($id);
+                    if ($product->user_id != $user->id && $user->role_id != Role::ADMIN)
+                        $fail("The {$model} must be created by the user.");
+                },
+            ],
+        ];
+    }
+
+    public function rulesDelete($id, $model = null)
+    {
+        $user =  $this->user();
+        return [
             'user.id' => [
                 function ($attribute, $value, Closure $fail) use ($id, $model, $user) {
                     $product = Product::find($id);
