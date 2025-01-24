@@ -22,7 +22,7 @@ class MessagesResponse
             'message' => "You're session was expired",
             'errors' => ["You're session was expired"],
             'status' => false
-        ], Response::HTTP_FORBIDDEN);
+        ], Response::HTTP_UNAUTHORIZED);
     }
 
     public static function notLogged()
@@ -31,7 +31,7 @@ class MessagesResponse
             'message' => "You are not logged",
             'errors' => ["You are not logged"],
             'status' => false
-        ], Response::HTTP_FORBIDDEN);
+        ], Response::HTTP_UNAUTHORIZED);
     }
 
     public static function authFail()
