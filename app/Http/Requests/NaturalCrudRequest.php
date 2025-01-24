@@ -38,12 +38,22 @@ class NaturalCrudRequest extends FormRequest
         return $responses[$method]();
     }
 
+    public function rulesGet()
+    {
+        return [];
+    }
+
     public function rulesPost()
     {
         return [];
     }
 
     public function rulesPut($id)
+    {
+        return [];
+    }
+
+    public function rulesDelete($id)
     {
         return [];
     }
