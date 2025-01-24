@@ -2,6 +2,7 @@
 
 namespace App\Models\Catalogs;
 
+use App\Models\Admin\Role;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -33,6 +34,6 @@ class Product extends Model
 
     public function getCanModifyAttribute(): bool
     {
-        return $this->attributes['user_id'] === request()->user()->id;
+        return $this->attributes['user_id'] === request()->user()->id || request()->user()->role_id == Role::ADMIN;
     }
 }
