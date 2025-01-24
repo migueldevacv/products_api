@@ -40,6 +40,11 @@ class User extends Authenticatable implements JWTSubject
         'remember_token',
     ];
 
+    protected $appends = [
+        'status_label',
+        'can_modify',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *
@@ -61,5 +66,18 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function getStatusLabelAttribute(): string
+    {
+        return $this->attributes['status'] === 1 ? 'ACTIVE' : 'INACTIVE';
+    }
+
+    public function getCanModifyAttribute(): bool
+    {
+        if (request()->user())
+            return Role::ADMIN === request()->user()->role_id;
+        else 
+            return false;
     }
 }

@@ -33,7 +33,7 @@ class ProductRequest extends NaturalCrudRequest
         return [
             'name' => 'required|string|max:50|min:5',
             'description' => 'required|string',
-            'image' => 'required|string',
+            // 'image' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
@@ -46,7 +46,7 @@ class ProductRequest extends NaturalCrudRequest
         return [
             'name' => 'required|string|max:50|min:5',
             'description' => 'required|string',
-            'image' => 'required|string',
+            // 'image' => 'required|string',
             'price' => 'required|numeric',
             'quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
