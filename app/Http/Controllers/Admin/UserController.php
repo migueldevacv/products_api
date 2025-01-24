@@ -53,7 +53,8 @@ class UserController extends Controller
     public function update(UserRequest $req, $id)
     {
         $data = $req->validated();
-        $data['password'] = Hash::make($data['password']);
+        if (isset($data['password']))
+            $data['password'] = Hash::make($data['password']);
         $user = User::find($id);
         $user->update($data);
         return MessagesResponse::updatedOk('user', $user);
