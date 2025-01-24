@@ -30,7 +30,7 @@ class UserRequest extends NaturalCrudRequest
         return [
             'email' => 'required|string|max:100|min:8|unique:' . $this->_table,
             'password' => 'required|string|max:20|min:7',
-            'c_password' => 'required|string|max:20|min:7|same:password',
+            // 'c_password' => 'required|string|max:20|min:7|same:password',
             'name' => 'required|string|max:50|min:4',
             'role_id' => 'exists:roles,id',
         ];
@@ -40,7 +40,7 @@ class UserRequest extends NaturalCrudRequest
     {
         return [
             'password' => 'required|string|max:20|min:7',
-            'c_password' => 'required|string|max:20|min:7|same:password',
+            // 'c_password' => 'required|string|max:20|min:7|same:password',
             'name' => 'required|string|max:50|min:4',
             'role_id' => 'required|exists:roles,id',
             'email' => [
